@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="FlifoService" targetNamespace="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws" elementFormDefault="qualified" targetNamespace="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws" version="1.0">
+
+  <xs:element name="createFlight" type="tns:createFlight"/>
+
+  <xs:element name="createFlightResponse" type="tns:createFlightResponse"/>
+
+  <xs:element name="createFlights" type="tns:createFlights"/>
+
+  <xs:element name="createFlightsResponse" type="tns:createFlightsResponse"/>
+
+  <xs:element name="flight" type="tns:flight"/>
+
+  <xs:element name="flightInfo" type="tns:flightInfo"/>
+
+  <xs:element name="getFlightInfo" type="tns:getFlightInfo"/>
+
+  <xs:element name="getFlightInfoResponse" type="tns:getFlightInfoResponse"/>
+
+  <xs:element name="updateActualArrival" type="tns:updateActualArrival"/>
+
+  <xs:element name="updateActualArrivalResponse" type="tns:updateActualArrivalResponse"/>
+
+  <xs:element name="updateActualDeparture" type="tns:updateActualDeparture"/>
+
+  <xs:element name="updateActualDepartureResponse" type="tns:updateActualDepartureResponse"/>
+
+  <xs:element name="updateExpectedDeparture" type="tns:updateExpectedDeparture"/>
+
+  <xs:element name="updateExpectedDepartureResponse" type="tns:updateExpectedDepartureResponse"/>
+
+  <xs:complexType name="createFlight">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element minOccurs="0" name="date" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="flight">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="airline" type="tns:airline"/>
+      <xs:element minOccurs="0" name="destinationAirport" type="tns:airport"/>
+      <xs:element minOccurs="0" name="flightNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="originAirport" type="tns:airport"/>
+      <xs:element minOccurs="0" name="scheduleDepartureTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="scheduledDuration" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createFlightResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flightInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="flightInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="actualArrivalAirport" type="tns:airport"/>
+      <xs:element minOccurs="0" name="actualDepartureTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="actualDuration" type="xs:string"/>
+      <xs:element minOccurs="0" name="expectedDepartureTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="expectedDuration" type="xs:string"/>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element minOccurs="0" name="scheduledDepartureTime" type="xs:string"/>
+      <xs:element minOccurs="0" name="status" type="tns:status"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateActualArrival">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="actualArrival" type="xs:string"/>
+      <xs:element minOccurs="0" name="actualArrivalAirport" type="tns:airport"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateActualArrivalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flightInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFlightInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getFlightInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flightInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateExpectedDeparture">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="newExpectedDeparture" type="xs:string"/>
+      <xs:element minOccurs="0" name="newExpectedDuration" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateExpectedDepartureResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flightInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateActualDeparture">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="actualDeparture" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateActualDepartureResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flightInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createFlights">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:flight"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="dates" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createFlightsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="flightInfoList" type="tns:flightInfo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="airline">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AA"/>
+      <xs:enumeration value="MQ"/>
+      <xs:enumeration value="WS"/>
+      <xs:enumeration value="LO"/>
+      <xs:enumeration value="F9"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="airport">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="KDFW"/>
+      <xs:enumeration value="KOKC"/>
+      <xs:enumeration value="KJFK"/>
+      <xs:enumeration value="KDTW"/>
+      <xs:enumeration value="KLAS"/>
+      <xs:enumeration value="KORD"/>
+      <xs:enumeration value="KMCO"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CANCELLED"/>
+      <xs:enumeration value="DELAYED"/>
+      <xs:enumeration value="ON_TIME"/>
+      <xs:enumeration value="ARRIVED"/>
+      <xs:enumeration value="DIVERTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createFlight">
+    <wsdl:part element="tns:createFlight" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualArrival">
+    <wsdl:part element="tns:updateActualArrival" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlightsResponse">
+    <wsdl:part element="tns:createFlightsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlightInfo">
+    <wsdl:part element="tns:getFlightInfo" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExpectedDepartureResponse">
+    <wsdl:part element="tns:updateExpectedDepartureResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualDepartureResponse">
+    <wsdl:part element="tns:updateActualDepartureResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExpectedDeparture">
+    <wsdl:part element="tns:updateExpectedDeparture" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlightResponse">
+    <wsdl:part element="tns:createFlightResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlightInfoResponse">
+    <wsdl:part element="tns:getFlightInfoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualDeparture">
+    <wsdl:part element="tns:updateActualDeparture" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualArrivalResponse">
+    <wsdl:part element="tns:updateActualArrivalResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlights">
+    <wsdl:part element="tns:createFlights" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FlifoService">
+    <wsdl:operation name="createFlight">
+      <wsdl:input message="tns:createFlight" name="createFlight">
+    </wsdl:input>
+      <wsdl:output message="tns:createFlightResponse" name="createFlightResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualArrival">
+      <wsdl:input message="tns:updateActualArrival" name="updateActualArrival">
+    </wsdl:input>
+      <wsdl:output message="tns:updateActualArrivalResponse" name="updateActualArrivalResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFlightInfo">
+      <wsdl:input message="tns:getFlightInfo" name="getFlightInfo">
+    </wsdl:input>
+      <wsdl:output message="tns:getFlightInfoResponse" name="getFlightInfoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExpectedDeparture">
+      <wsdl:input message="tns:updateExpectedDeparture" name="updateExpectedDeparture">
+    </wsdl:input>
+      <wsdl:output message="tns:updateExpectedDepartureResponse" name="updateExpectedDepartureResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualDeparture">
+      <wsdl:input message="tns:updateActualDeparture" name="updateActualDeparture">
+    </wsdl:input>
+      <wsdl:output message="tns:updateActualDepartureResponse" name="updateActualDepartureResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFlights">
+      <wsdl:input message="tns:createFlights" name="createFlights">
+    </wsdl:input>
+      <wsdl:output message="tns:createFlightsResponse" name="createFlightsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FlifoServiceSoapBinding" type="tns:FlifoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createFlight">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createFlight">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createFlightResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualArrival">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateActualArrival">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateActualArrivalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFlightInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFlightInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFlightInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExpectedDeparture">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateExpectedDeparture">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateExpectedDepartureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualDeparture">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateActualDeparture">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateActualDepartureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFlights">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createFlights">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createFlightsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlifoService">
+    <wsdl:port binding="tns:FlifoServiceSoapBinding" name="FlifoServiceImplPort">
+      <soap:address location="http://localhost:8080/flifo-jaxws/FlifoService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.redhat.rhcna.eipractice</groupId>
+  <artifactId>sabre-demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Sabre Demo</name>
+
+  <properties>
+    <version.java>1.8</version.java>
+    <version.cxf>3.1.5.redhat-630283</version.cxf>
+    <version.jboss.bom.eap>6.4.16.GA</version.jboss.bom.eap>
+    <version.jboss.fuse>6.3.0.redhat-283</version.jboss.fuse>
+    <version.jackson2>2.6.3</version.jackson2>
+    <version.wildfly.camel>2.4.0.redhat-630283</version.wildfly.camel>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.bom.eap</groupId>
+        <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+        <version>${version.jboss.bom.eap}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.fuse.bom</groupId>
+        <artifactId>jboss-fuse-parent</artifactId>
+        <version>${version.jboss.fuse}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.wildfly.camel</groupId>
+        <artifactId>wildfly-camel-subsystem</artifactId>
+        <version>${version.wildfly.camel}</version>
+        <scope>provided</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>*</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>com.redhat.rhcna.eipractice.sabre-demo</groupId>
+        <artifactId>flifo-jaxws-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>${version.jackson2}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>${version.java}</source>
+            <target>${version.java}</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.cxf</groupId>
+          <artifactId>cxf-codegen-plugin</artifactId>
+          <version>${version.cxf}</version>
+          <executions>
+            <execution>
+              <id>generate-sources</id>
+              <phase>generate-sources</phase>
+              <configuration>
+                <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+              </configuration>
+              <goals>
+                <goal>wsdl2java</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <modules>
+    <module>flifo-jaxws-api</module>
+    <module>flifo-jaxws</module>
+    <module>flifo-camel-rest</module>
+    <module>flifo-jaxrs-proxy</module>
+  </modules>
+</project>
