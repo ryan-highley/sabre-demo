@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="b04616a6-30c4-4b04-bec4-22df23c77e3c" activeEnvironment="Default" name="Sabre Demo" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7f84c3a8-2ffb-4500-a566-21fa4a1733e7" wsaVersion="NONE" name="FlifoServiceSoapBinding" type="wsdl" bindingName="{urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws}FlifoServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/flifo-jaxws/FlifoService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/flifo-jaxws/FlifoService?wsdl"><con:part><con:url>http://localhost:8080/flifo-jaxws/FlifoService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FlifoService" targetNamespace="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="createFlight" type="tns:createFlight"/>
+      <xs:element name="createFlightResponse" type="tns:createFlightResponse"/>
+      <xs:element name="createFlights" type="tns:createFlights"/>
+      <xs:element name="createFlightsResponse" type="tns:createFlightsResponse"/>
+      <xs:element name="flight" type="tns:flight"/>
+      <xs:element name="flightInfo" type="tns:flightInfo"/>
+      <xs:element name="getFlightInfo" type="tns:getFlightInfo"/>
+      <xs:element name="getFlightInfoResponse" type="tns:getFlightInfoResponse"/>
+      <xs:element name="updateActualArrival" type="tns:updateActualArrival"/>
+      <xs:element name="updateActualArrivalResponse" type="tns:updateActualArrivalResponse"/>
+      <xs:element name="updateActualDeparture" type="tns:updateActualDeparture"/>
+      <xs:element name="updateActualDepartureResponse" type="tns:updateActualDepartureResponse"/>
+      <xs:element name="updateExpectedDeparture" type="tns:updateExpectedDeparture"/>
+      <xs:element name="updateExpectedDepartureResponse" type="tns:updateExpectedDepartureResponse"/>
+      <xs:complexType name="createFlight">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element minOccurs="0" name="date" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="flight">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="airline" type="tns:airline"/>
+          <xs:element minOccurs="0" name="destinationAirport" type="tns:airport"/>
+          <xs:element minOccurs="0" name="flightNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="originAirport" type="tns:airport"/>
+          <xs:element minOccurs="0" name="scheduleDepartureTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="scheduledDuration" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createFlightResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flightInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="flightInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="actualArrivalAirport" type="tns:airport"/>
+          <xs:element minOccurs="0" name="actualDepartureTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="actualDuration" type="xs:string"/>
+          <xs:element minOccurs="0" name="expectedDepartureTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="expectedDuration" type="xs:string"/>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element minOccurs="0" name="scheduledDepartureTime" type="xs:string"/>
+          <xs:element minOccurs="0" name="status" type="tns:status"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateActualArrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="actualArrival" type="tns:localDateTime"/>
+          <xs:element minOccurs="0" name="actualArrivalAirport" type="tns:airport"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType final="extension restriction" name="localDateTime">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="updateActualArrivalResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flightInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getFlightInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getFlightInfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flightInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateExpectedDeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="newExpectedDeparture" type="tns:localDateTime"/>
+          <xs:element minOccurs="0" name="newExpectedDuration" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateExpectedDepartureResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flightInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateActualDeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element minOccurs="0" name="originalScheduledDepartureDate" type="xs:string"/>
+          <xs:element minOccurs="0" name="actualDeparture" type="tns:localDateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateActualDepartureResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flightInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createFlights">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:flight"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="dates" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createFlightsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="flightInfoList" type="tns:flightInfo"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="airline">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AA"/>
+          <xs:enumeration value="MQ"/>
+          <xs:enumeration value="WS"/>
+          <xs:enumeration value="LO"/>
+          <xs:enumeration value="F9"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="airport">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="KDFW"/>
+          <xs:enumeration value="KOKC"/>
+          <xs:enumeration value="KJFK"/>
+          <xs:enumeration value="KDTW"/>
+          <xs:enumeration value="KLAS"/>
+          <xs:enumeration value="KORD"/>
+          <xs:enumeration value="KMCO"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="CANCELLED"/>
+          <xs:enumeration value="DELAYED"/>
+          <xs:enumeration value="ON_TIME"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createFlight">
+    <wsdl:part element="tns:createFlight" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualArrival">
+    <wsdl:part element="tns:updateActualArrival" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlightsResponse">
+    <wsdl:part element="tns:createFlightsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlightInfo">
+    <wsdl:part element="tns:getFlightInfo" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExpectedDepartureResponse">
+    <wsdl:part element="tns:updateExpectedDepartureResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualDepartureResponse">
+    <wsdl:part element="tns:updateActualDepartureResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateExpectedDeparture">
+    <wsdl:part element="tns:updateExpectedDeparture" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlightResponse">
+    <wsdl:part element="tns:createFlightResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFlightInfoResponse">
+    <wsdl:part element="tns:getFlightInfoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualDeparture">
+    <wsdl:part element="tns:updateActualDeparture" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateActualArrivalResponse">
+    <wsdl:part element="tns:updateActualArrivalResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFlights">
+    <wsdl:part element="tns:createFlights" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FlifoService">
+    <wsdl:operation name="createFlight">
+      <wsdl:input message="tns:createFlight" name="createFlight"></wsdl:input>
+      <wsdl:output message="tns:createFlightResponse" name="createFlightResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualArrival">
+      <wsdl:input message="tns:updateActualArrival" name="updateActualArrival"></wsdl:input>
+      <wsdl:output message="tns:updateActualArrivalResponse" name="updateActualArrivalResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFlightInfo">
+      <wsdl:input message="tns:getFlightInfo" name="getFlightInfo"></wsdl:input>
+      <wsdl:output message="tns:getFlightInfoResponse" name="getFlightInfoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExpectedDeparture">
+      <wsdl:input message="tns:updateExpectedDeparture" name="updateExpectedDeparture"></wsdl:input>
+      <wsdl:output message="tns:updateExpectedDepartureResponse" name="updateExpectedDepartureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualDeparture">
+      <wsdl:input message="tns:updateActualDeparture" name="updateActualDeparture"></wsdl:input>
+      <wsdl:output message="tns:updateActualDepartureResponse" name="updateActualDepartureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFlights">
+      <wsdl:input message="tns:createFlights" name="createFlights"></wsdl:input>
+      <wsdl:output message="tns:createFlightsResponse" name="createFlightsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FlifoServiceSoapBinding" type="tns:FlifoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createFlight">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createFlight">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createFlightResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualArrival">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateActualArrival">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateActualArrivalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFlightInfo">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFlightInfo">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFlightInfoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExpectedDeparture">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateExpectedDeparture">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateExpectedDepartureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateActualDeparture">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateActualDeparture">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateActualDepartureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFlights">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createFlights">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createFlightsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlifoService">
+    <wsdl:port binding="tns:FlifoServiceSoapBinding" name="FlifoServiceImplPort">
+      <soap:address location="http://localhost:8080/flifo-jaxws/FlifoService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint></con:endpoints><con:operation id="45041e14-0e82-4d8f-8324-b841d9c4cb76" isOneWay="false" action="" name="createFlight" bindingOperationName="createFlight" type="Request-Response" outputName="createFlightResponse" inputName="createFlight" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="200e39a9-cca7-4c3f-a9ff-df29f0779aea" name="Create DFW - MCO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <createFlight xmlns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+         <flight>
+            <airline>AA</airline>
+            <destinationAirport>KMCO</destinationAirport>
+            <flightNumber>234</flightNumber>
+            <originAirport>KDFW</originAirport>
+            <scheduleDepartureTime>09:15</scheduleDepartureTime>
+            <scheduledDuration>PT3H15M</scheduledDuration>
+         </flight>
+         <date>2017-08-31</date>
+      </createFlight>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws/FlifoService/createFlight"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a11ae38e-f855-4dbe-8342-1ebedb18589c" isOneWay="false" action="" name="createFlights" bindingOperationName="createFlights" type="Request-Response" outputName="createFlightsResponse" inputName="createFlights" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a964498-47ca-4f14-9922-30763834de24" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:jax="http://jaxws.flifo.sabre_demo.eipractice.rhcna.redhat.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <jax:createFlights>
+         <!--Optional:-->
+         <jax:flight>
+            <!--Optional:-->
+            <airline>?</airline>
+            <!--Optional:-->
+            <destinationAirport>?</destinationAirport>
+            <!--Optional:-->
+            <flightNumber>?</flightNumber>
+            <!--Optional:-->
+            <originAirport>?</originAirport>
+            <!--Optional:-->
+            <scheduleDepartureTime>?</scheduleDepartureTime>
+            <!--Optional:-->
+            <scheduledDuration>?</scheduledDuration>
+         </jax:flight>
+         <!--Zero or more repetitions:-->
+         <dates/>
+      </jax:createFlights>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://jaxws.flifo.sabre_demo.eipractice.rhcna.redhat.com/FlifoService/createFlights"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="615452f6-2e4e-4b19-ad41-7ded29b3d888" isOneWay="false" action="" name="getFlightInfo" bindingOperationName="getFlightInfo" type="Request-Response" outputName="getFlightInfoResponse" inputName="getFlightInfo" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f525fe69-15ce-4c60-a835-7f2e733730ee" name="Get DFW - MCO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getFlightInfo xmlns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+         <flight>
+            <airline>AA</airline>
+            <flightNumber>234</flightNumber>
+            <originAirport>KDFW</originAirport>
+            <scheduleDepartureTime>09:15</scheduleDepartureTime>
+         </flight>
+         <originalScheduledDepartureDate>2017-08-31</originalScheduledDepartureDate>
+      </getFlightInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://jaxws.flifo.sabre_demo.eipractice.rhcna.redhat.com/FlifoService/getFlightInfo"/><con:wsrmConfig version="1.2"/></con:call><con:call id="edb101a2-1898-4254-91f5-319c3f77753d" name="Get MCO - LAS"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <getFlightInfo xmlns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+         <flight>
+            <airline>AA</airline>
+            <flightNumber>456</flightNumber>
+            <originAirport>KMCO</originAirport>
+            <scheduleDepartureTime>10:15</scheduleDepartureTime>
+         </flight>
+         <originalScheduledDepartureDate>2017-08-31</originalScheduledDepartureDate>
+      </getFlightInfo>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws/FlifoService/getFlightInfo"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2ad3dc0b-9ca0-4087-ad16-1e7c59ff97a3" isOneWay="false" action="" name="updateActualArrival" bindingOperationName="updateActualArrival" type="Request-Response" outputName="updateActualArrivalResponse" inputName="updateActualArrival" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dfe37305-0cf5-4a29-ac1e-7dbd1a51a868" name="Update DFW - MCO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <updateActualArrival xmlns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+         <flight>
+            <airline>AA</airline>
+            <flightNumber>234</flightNumber>
+            <originAirport>KDFW</originAirport>
+            <scheduleDepartureTime>09:15</scheduleDepartureTime>
+         </flight>
+         <originalScheduledDepartureDate>2017-08-31</originalScheduledDepartureDate>
+         <actualArrival>2017-08-31T18:25:00Z</actualArrival>
+         <actualArrivalAirport>KMCO</actualArrivalAirport>
+      </updateActualArrival>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://jaxws.flifo.sabre_demo.eipractice.rhcna.redhat.com/FlifoService/updateActualArrival"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="7fc0936e-08c5-4904-8558-252933ff107e" isOneWay="false" action="" name="updateActualDeparture" bindingOperationName="updateActualDeparture" type="Request-Response" outputName="updateActualDepartureResponse" inputName="updateActualDeparture" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5016ce65-6735-465d-b786-5c3bd4ffb929" name="Update DFW - MCO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <updateActualDeparture xmlns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+         <flight>
+            <airline>AA</airline>
+            <flightNumber>234</flightNumber>
+            <originAirport>KDFW</originAirport>
+            <scheduleDepartureTime>09:15</scheduleDepartureTime>
+         </flight>
+         <originalScheduledDepartureDate>2017-08-31</originalScheduledDepartureDate>
+         <actualDeparture>2017-08-31T14:55:00Z</actualDeparture>
+      </updateActualDeparture>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://jaxws.flifo.sabre_demo.eipractice.rhcna.redhat.com/FlifoService/updateActualDeparture"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b76b8513-2ef6-4bf9-9e53-bed7e0f4b0d0" isOneWay="false" action="" name="updateExpectedDeparture" bindingOperationName="updateExpectedDeparture" type="Request-Response" outputName="updateExpectedDepartureResponse" inputName="updateExpectedDeparture" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dd5ed672-a7f2-4769-a04c-bdff1dbba64a" name="Update DFW - MCO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/flifo-jaxws/FlifoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <updateExpectedDeparture xmlns="urn:eipractice.rhcna.redhat.com/sabre_demo/flifo-jaxws">
+         <flight>
+            <airline>AA</airline>
+            <flightNumber>234</flightNumber>
+            <originAirport>KDFW</originAirport>
+            <scheduleDepartureTime>09:15</scheduleDepartureTime>
+         </flight>
+         <originalScheduledDepartureDate>2017-08-31</originalScheduledDepartureDate>
+         <newExpectedDeparture>2017-08-31T14:45:00Z</newExpectedDeparture>
+         <newExpectedDuration>PT3H30M</newExpectedDuration>
+      </updateExpectedDeparture>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://jaxws.flifo.sabre_demo.eipractice.rhcna.redhat.com/FlifoService/updateExpectedDeparture"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:RestService" id="29c9cb22-4956-4e0c-a952-c06f1c178717" wadlVersion="http://wadl.dev.java.net/2009/02" name="flifo-camel-rest" type="rest" basePath="/flifo-camel-rest/flifo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="Flifo" path="/{airline}/{flightNumber}/{departureAirport}/{departureTime}/{scheduledDate}" id="bcf1b1a2-1de6-4b76-bc2b-d1bf76db4f06"><con:settings/><con:parameters><con:parameter><con:name>airline</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>flightNumber</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>departureAirport</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>departureTime</con:name><con:value/><con:style>TEMPLATE</con:style><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>scheduledDate</con:name><con:value>2017-08-31</con:value><con:style>TEMPLATE</con:style><con:default>2017-08-31</con:default><con:description xsi:nil="true"/></con:parameter></con:parameters><con:method name="getFlightInfo" id="e0cd2e20-bcbd-4636-901d-9659411bc6e5" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ns="http://localhost/flifo-camel-rest/flifo/AA/234/KDFW/09%3A15/2017-08-31">ns:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/html</con:mediaType><con:status>200</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>404</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/plain;charset=ISO-8859-1</con:mediaType><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Get DFW - MCO" id="84262a9d-40ad-4cef-8c1e-54a63440621b" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/flifo-camel-rest/flifo/AA/234/KDFW/09%3A15/2017-08-31</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="departureAirport" value="KDFW"/>
+  <con:entry key="departureTime" value="09:15"/>
+  <con:entry key="flightNumber" value="234"/>
+  <con:entry key="airline" value="AA"/>
+</con:parameters><con:parameterOrder><con:entry>airline</con:entry><con:entry>flightNumber</con:entry><con:entry>departureAirport</con:entry><con:entry>departureTime</con:entry><con:entry>scheduledDate</con:entry></con:parameterOrder></con:request><con:request name="Get MCO - LAS" id="731b2bb1-3034-4017-a36e-0d466319ebe9" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:originalUri>http://localhost/</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="departureAirport" value="KMCO"/>
+  <con:entry key="departureTime" value="10:15"/>
+  <con:entry key="flightNumber" value="456"/>
+  <con:entry key="airline" value="AA"/>
+</con:parameters><con:parameterOrder><con:entry>airline</con:entry><con:entry>flightNumber</con:entry><con:entry>departureAirport</con:entry><con:entry>departureTime</con:entry><con:entry>scheduledDate</con:entry></con:parameterOrder></con:request></con:method><con:method name="createFlight" id="111144c6-7725-4702-b550-183900e1d7a6" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>text/plain;charset=ISO-8859-1</con:mediaType><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ns="http://localhost/flifo-camel-rest/flifo/AA/456/KMCO/10%3A15/2017-08-31">ns:Response</con:element></con:representation><con:request name="Create MCO - LAS" id="5922bc16-bf1f-449a-aa9a-bb223a0118fb" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+	"destinationAirport": "KLAS",
+	"scheduledDuration": "PT4H15M"
+}
+</con:request><con:originalUri>http://localhost/flifo-camel-rest/flifo/AA/456/KMCO/10%3A15/2017-08-31</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters>
+  <con:entry key="departureAirport" value="KMCO"/>
+  <con:entry key="departureTime" value="10:15"/>
+  <con:entry key="flightNumber" value="456"/>
+  <con:entry key="airline" value="AA"/>
+</con:parameters></con:request></con:method></con:resource></con:interface><con:interface xsi:type="con:RestService" id="39fcfe7b-7c84-4475-bf9e-3a14702337b7" wadlVersion="http://wadl.dev.java.net/2009/02" name="flifo-jaxrs-proxy" type="rest" basePath="/flifo-jaxrs-proxy/flifo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="getFlightInfo" path="/getFlightInfo" id="b4ac33de-aa4e-4e24-934f-43befe9d1586"><con:settings/><con:parameters/><con:method name="post" id="1e1b95d3-72b1-43d9-bf86-e4450510ae75" method="POST"><con:settings/><con:parameters/><con:representation type="FAULT"><con:mediaType>text/html;charset=utf-8</con:mediaType><con:status>404</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:get="http://localhost/flifo-jaxrs-proxy/flifo/flifo-jaxrs-proxy/flifo/getFlightInfo">get:Response</con:element></con:representation><con:request name="Get MCO - LAS" id="b14a8543-627c-4534-8e03-2128fe40192b" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+  "flight": {
+    "airline": "AA",
+    "flightNumber": "456",
+    "originAirport": "KMCO",
+    "scheduleDepartureTime": "10:15"
+  },
+  "originalScheduledDepartureDate": "2017-08-31"
+}</con:request><con:originalUri>http://localhost/flifo-jaxrs-proxy/flifo/flifo-jaxrs-proxy/flifo/getFlightInfo</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="createFlight" path="createFlight" id="917a3068-af31-4132-975f-9cf224b15bf5"><con:settings/><con:parameters/><con:method name="post" id="f56a7907-c317-4318-b249-2d91cb86896d" method="POST"><con:settings/><con:parameters/><con:request name="Create MCO - LAS" id="3e689e59-a69d-4858-812f-f789ac398c39" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+	"flight": {
+		"airline": "AA",
+		"flightNumber": "234",
+		"originAirport": "KDFW",
+		"scheduleDepartureTime": "09:15",
+		"scheduledDuration": "PT3H15M",
+		"destinationAirport": "KMCO"
+	},
+	"date": "2017-08-31"
+}
+</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="updateActualDeparture" path="updateActualDeparture" id="c69b8b35-1057-4773-bbb5-04df5faaaa48"><con:settings/><con:parameters/><con:method name="post" id="d566295b-2737-4649-b743-6a664bc01287" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:upd="http://localhost/flifo-jaxrs-proxy/flifo/updateActualDeparture">upd:Response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:request name="Update DFW - MCO" id="b05fb625-b4da-4f40-9a0d-7ce85a6fd9cf" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+	"flight": {
+		"airline": "AA",
+		"flightNumber": "234",
+		"originAirport": "KDFW",
+		"scheduleDepartureTime": "09:15"
+	},
+	"originalScheduledDepartureDate": "2017-08-31",
+	"actualDeparture": "2017-08-31T14:55:00Z"
+	
+}
+</con:request><con:originalUri>http://localhost/flifo-jaxrs-proxy/flifo/updateActualDeparture</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
