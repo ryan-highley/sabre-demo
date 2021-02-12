@@ -34,10 +34,6 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.redhat.rhcna.eipractice.sabre-demo</groupId>
-      <artifactId>flifo-jaxws-api</artifactId>
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
